@@ -22,8 +22,7 @@
     let lName = document.getElementById("lName").value;
     let birthday = document.getElementById("birthday").value;
 
-    let output = (validateUserId(uid) ? "Valid UserId" : "Invalid UserID!") + "<br>" +
-             "UserId: " + uid + "<br>"
+    let output = (validateUserId(uid) ?  "UserId: " + uid + "<br>" : "Invalid UserID!") + "<br>" +
              "First Name: " + fname + "<br>" +
              "Last Name: " + lName + "<br>" +
              "Birthdate: " + birthday;
@@ -38,12 +37,35 @@
         if (uid.length < 8 || uid.length > 12 ){
             return false;
         }
-        //if the length is valid this loop will run. Variables start off as false until the conditions are met.
+        //if the length paramater is true this loop will run. Variables start off as false until the conditions are met.
         let hasUppercase = false;
         let hasLowercase = false;
         let hasNumber = false;
 
+        for (let i = 0; i < uid.length; i++){
+            let char = uid.charAt(i);
+
+            if(char === char.toUpperCase() && char !== char.toLowerCase()){
+                hasUppercase = true;
+            }
+            if (char === char.toLowerCase() && char !== char.toUpperCase()) {
+                hasLowercase = true;
+            }
+            if (!isNaN(parseInt(char))) {
+                hasNumber = true;
+            }
+        }
+        //used this console.log because I needed to debug my if statements
+            console.log(
+            "UID:", uid,
+            "length:", uid.length,
+            "hasUpper:", hasUppercase,
+            "hasLower:", hasLowercase,
+            "hasNumber:", hasNumber
+            );
+        return hasUppercase && hasLowercase && hasNumber;
     }   
+    
     // and document.getElementById().innerHTML to display results
     // write your JS functions here
     // write your JS Loop For here to print the Xs
