@@ -27,7 +27,7 @@ Create an “Accept” button to execute your functions and create the following
 
     If the number of days is less than (365*18) then print “You are probably not old enough to take this class!”
 
-Use document.getElementById().innerHtml to display results and information messages on the Display window.
+    Use document.getElementById().innerHtml to display results and information messages on the Display window.
 
 Create a "For loop” that loops 20 times and uses code similar to:
 
