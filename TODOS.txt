@@ -14,7 +14,7 @@
 
     birthday is birthday, using type 'date'.
 
-You have to write a function called “dateDiff” that accepts one date parameter and returns the number of days between the birthday provided and the current date.
+    You have to write a function called “dateDiff” that accepts one date parameter and returns the number of days between the birthday provided and the current date.
 
 Create an “Accept” button to execute your functions and create the following output:
 
@@ -22,9 +22,10 @@ Create an “Accept” button to execute your functions and create the following
 
     If the fname, lname, or birthday fields are left empty then print “Invalid fname” etc…
 
-Print “fname lname you have been breathing for ### days!” where ### is the number returned by your dateDiff() function.  Remember to convert milliseconds to days and only return the integer (whole) number of days.
+    Print “fname lname you have been breathing for ### days!” where ### is the number returned by your dateDiff() function.  
+    Remember to convert milliseconds to days and only return the integer (whole) number of days.
 
-If the number of days is less than (365*18) then print “You are probably not old enough to take this class!”
+    If the number of days is less than (365*18) then print “You are probably not old enough to take this class!”
 
 Use document.getElementById().innerHtml to display results and information messages on the Display window.
 

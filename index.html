@@ -20,27 +20,30 @@
     let fname = document.getElementById("fname").value;
     let lname = document.getElementById("lname").value;
     let birthday = document.getElementById("birthday").value;
+    let daysAlive = dateDiff(birthday);
 
     let output = (validateUserId(uid) ?  "UserId: " + uid + "<br>" : "Invalid UserID!" + "<br>") +
              (fname ? "First Name: " + fname + "<br>" : "Invalid fname<br>") +
              (lname ? "Last Name: " + lname + "<br>" : "Invalid lname<br>") +
-             (birthday ? "Birthdate: " + birthday + "<br>" : "Invalid birthday<br>") 
-            //  + fname + " "+ lname + " you have been breathing for " + birthday + " days!";
-
+             (birthday ? "Birthdate: " + birthday + "<br>" : "Invalid birthday<br>") +
+             (fname + " "+ lname + " you have been breathing for " + daysAlive + " days!")
+             
+             if (daysAlive < 365 * 18) {
+            output += "<br>You are probably not old enough to take this class!";
+            }
+            
     document.getElementById("display").innerHTML = output;
     
 }
     // and validate inputs here using if statements
     function validateUserId(uid){
-
-        //this will check for length. If it returns false validateUserId will be false and the output will be invalid.
-        if (uid.length < 8 || uid.length > 12 ){
-            return false;
-        }
-        //if the length paramater is true this loop will run. Variables start off as false until the conditions are met.
         let hasUppercase = false;
         let hasLowercase = false;
         let hasNumber = false;
+
+        if (uid.length < 8 || uid.length > 12 ){
+            return false;
+        }
 
         for (let i = 0; i < uid.length; i++){
             let char = uid.charAt(i);
@@ -57,14 +60,24 @@
         }
         //used this console.log because I needed to debug my if statements
             console.log(
-            "UID:", uid,
+            "uid:", uid,
             "length:", uid.length,
             "hasUpper:", hasUppercase,
             "hasLower:", hasLowercase,
             "hasNumber:", hasNumber
             );
+      
         return hasUppercase && hasLowercase && hasNumber;
     }   
+
+    function dateDiff(birthday){
+        let today = new Date();
+        let bday = new Date(birthday);
+        let diffInMilliseconds = today - bday;
+        let diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+        
+        return diffInDays;
+    }
 
 
     // and document.getElementById().innerHTML to display results
