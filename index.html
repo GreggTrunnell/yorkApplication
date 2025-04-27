@@ -2,11 +2,10 @@
 <html>
 <body>
 
-
 <div>
     UserID: <input type="text" id="uid"><br><br>
     First Name: <input type="text" id="fname"><br><br>
-    Last Name: <input type="text" id="lName"><br><br>
+    Last Name: <input type="text" id="lname"><br><br>
     Birthdate: <input type="date" id="birthday"><br><br>
     
     <button onClick=accept()>Accept</button>
@@ -19,16 +18,17 @@
         // put your JavaScript code to read HTML inputs
     let uid = document.getElementById("uid").value;
     let fname = document.getElementById("fname").value;
-    let lName = document.getElementById("lName").value;
+    let lname = document.getElementById("lname").value;
     let birthday = document.getElementById("birthday").value;
 
-    let output = (validateUserId(uid) ?  "UserId: " + uid + "<br>" : "Invalid UserID!") + "<br>" +
-             "First Name: " + fname + "<br>" +
-             "Last Name: " + lName + "<br>" +
-             "Birthdate: " + birthday;
-
+    let output = (validateUserId(uid) ?  "UserId: " + uid + "<br>" : "Invalid UserID!" + "<br>") +
+             (fname ? "First Name: " + fname + "<br>" : "Invalid fname<br>") +
+             (lname ? "Last Name: " + lname + "<br>" : "Invalid lname<br>") +
+             (birthday ? "Birthdate: " + birthday + "<br>" : "Invalid birthday<br>") 
+            //  + fname + " "+ lname + " you have been breathing for " + birthday + " days!";
 
     document.getElementById("display").innerHTML = output;
+    
 }
     // and validate inputs here using if statements
     function validateUserId(uid){
@@ -65,7 +65,8 @@
             );
         return hasUppercase && hasLowercase && hasNumber;
     }   
-    
+
+
     // and document.getElementById().innerHTML to display results
     // write your JS functions here
     // write your JS Loop For here to print the Xs
