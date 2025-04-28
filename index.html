@@ -24,15 +24,17 @@
     let daysAlive = dateDiff(birthday);
     
      // and document.getElementById().innerHTML to display results
-    let output = (validateUserId(uid) ?  "UserId: " + uid + "<br>" : "Invalid UserID!" + "<br>") +
-             (fname ? "First Name: " + fname + "<br>" : "Invalid fname<br>") +
-             (lname ? "Last Name: " + lname + "<br>" : "Invalid lname<br>") +
-             (birthday ? "Birthdate: " + birthday + "<br>" : "Invalid birthday<br>") +
-             (fname + " "+ lname + " you have been breathing for " + daysAlive + " days!")
+    let output = (validateUserId(uid) ?  "UserId: " + uid + "<br>" : `<span style="color:red">Invalid UserId</span>` + "<br>") +
+             (fname ? "First Name: " + `<span style="color:green">${fname}</span>` + "<br>" : `<span style="color:red">Invalid fname</span>` + "<br>") +
+             (lname ? "Last Name: " + lname + "<br>" : `<span style="color:red">Invalid lname</span>` + "<br>") +
+             (birthday ? "Birthdate: " + birthday + "<br>" : `<span style="color:red">Invalid birthday</span>` + "<br>") +
+             (`<span style="color:green;">${fname} ${lname} you have been breathing for ${daysAlive} days!"</span>`)
              
              if (daysAlive < 365 * 18) {
-            output += "<br>You are probably not old enough to take this class!";
+            output += `<br><span style="color:red;">You are probably not old enough to take this class!</span>`
             }
+         
+
 
     document.getElementById("display").innerHTML = output;
     }
