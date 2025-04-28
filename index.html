@@ -8,8 +8,10 @@
     Last Name: <input type="text" id="lname"><br><br>
     Birthdate: <input type="date" id="birthday"><br><br>
     
-    <button onClick=accept()>Accept</button>
+    <button onclick=accept()>Accept</button>
+    <button onclick=makeGs()>G-Happy!</button>
     <div id="display"></div>
+    <div id="gContainer" style="color: green"></div>
 </div>
 
 <script>
@@ -36,6 +38,15 @@
     }
     
     // and validate inputs here using if statements write your JS functions here
+    function dateDiff(birthday){
+        let today = new Date();
+        let bday = new Date(birthday);
+        let diffInMilliseconds = today - bday;
+        let diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+        
+        return diffInDays;
+    }
+
     function validateUserId(uid){
         let hasUppercase = false;
         let hasLowercase = false;
@@ -62,21 +73,15 @@
         return hasUppercase && hasLowercase && hasNumber;
     }   
 
-    function dateDiff(birthday){
-        let today = new Date();
-        let bday = new Date(birthday);
-        let diffInMilliseconds = today - bday;
-        let diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
-        
-        return diffInDays;
-    }
-    
     // write your JS Loop For here to print the Xs
-    // use something like document.write(str.padStart(i,"x") + "<br>");  
-    for (let i = 1; i <= 20; i++) {
-    let str = "";
-    document.write(str.padStart(i,"X") + "<br>");
-    };
+    function makeGs() {
+      const container = document.getElementById("gContainer");
+      let str = "";
+      for (let i = 1; i <= 20; i++) {
+        str += "".padStart(i, "G") + "<br>";
+      }
+      container.innerHTML += str;
+    }
 </script>
 
 </body>
